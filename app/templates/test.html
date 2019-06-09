@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {{ super() }}
+    {{ data.name }}
+    {% if data.age < 18 %}
+        {{ data['name'] }}
+    {% elif data.age == 18 %}
+        {{ data | length() }}
+        {{ data.name | default('小飞侠') }}
+        {{ data.school | default(data.school) | default('小飞侠') }}
+        {% with messages = get_flashed_messages() %}
+        {{ messages }}
+        {% endwith %}
+        {# 管道命令 #}
+    {% else %}
+        do something
+    {% endif %}
+    {# jinjia #}
+{% endblock %}
